@@ -52,6 +52,7 @@ if (VISIONARY_BASE_ENABLE_AUTOIP)
       VISIONARY_BASE_PRIVATE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/3pp)
   else()
     # require minimum version when property_tree was introduced - 1.41 (foreach is even older)
+    cmake_policy(SET CMP0167 NEW) # We (cellumation) want to use the system installed boost and its config based find scripts.
     find_package(Boost 1.41 REQUIRED)
     target_link_libraries(${TARGET_NAME} Boost::boost)
   endif()
